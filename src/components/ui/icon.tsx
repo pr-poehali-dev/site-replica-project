@@ -3,37 +3,37 @@ import React from "react";
 import * as LucideIcons from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export interface IconProps extends React.HTMLAttributes<HTMLDivElement> {
-  name: string;
+type IconProps = {
+  name: keyof typeof LucideIcons | string;
+  fallback?: keyof typeof LucideIcons;
   color?: string;
   size?: number;
   strokeWidth?: number;
-  fallback?: string;
-}
+  className?: string;
+};
 
-const Icon = ({
-  name,
-  color,
-  size = 24,
+const Icon = ({ 
+  name, 
+  fallback = "CircleAlert", 
+  color, 
+  size = 24, 
   strokeWidth = 2,
-  className,
-  fallback = "CircleAlert",
-  ...props
+  className 
 }: IconProps) => {
-  // @ts-ignore - dynamic import
-  const LucideIcon = LucideIcons[name] || LucideIcons[fallback];
-
+  const IconComponent = (LucideIcons as any)[name] || (LucideIcons as any)[fallback];
+  
+  if (!IconComponent) {
+    console.warn(`Icon ${name} not found and fallback ${fallback} also not found`);
+    return null;
+  }
+  
   return (
-    <div className={cn("inline-flex", className)} {...props}>
-      {LucideIcon && (
-        <LucideIcon
-          color={color}
-          size={size}
-          strokeWidth={strokeWidth}
-          className="shrink-0"
-        />
-      )}
-    </div>
+    <IconComponent 
+      color={color} 
+      size={size} 
+      strokeWidth={strokeWidth}
+      className={cn("", className)} 
+    />
   );
 };
 
