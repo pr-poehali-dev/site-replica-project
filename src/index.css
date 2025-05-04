@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,18 +7,19 @@
 
 @layer base {
   :root {
-    --background: 44 88% 96%;
+    --background: 60 30% 96%;
     --foreground: 222.2 84% 4.9%;
     
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
     
     --pastel-blue: 206 70% 80%;
-    --pastel-green: 100 56% 87%;
+    --pastel-green: 125 56% 82%;
     --pastel-yellow: 48 100% 86%;
-    --pastel-pink: 352 83% 88%;
+    --pastel-pink: 355 100% 85%;
+    --pastel-peach: 25 100% 85%;
     
-    --primary: 176 70% 73%;
+    --primary: 128 34% 56%;
     --primary-foreground: 210 40% 98%;
     
     --secondary: 60 94% 86%;
@@ -38,7 +39,7 @@
     
     --ring: 222.2 84% 4.9%;
     
-    --radius: 1rem;
+    --radius: 1.5rem;
   }
 }
 
@@ -47,18 +48,37 @@
     @apply bg-background text-foreground;
     font-family: 'Poppins', sans-serif;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
 }
 
 @layer components {
   .bubble {
-    @apply rounded-3xl shadow-sm;
+    @apply rounded-[2rem] shadow-sm;
   }
   
   .speech-bubble {
-    @apply relative rounded-3xl p-4 shadow-sm;
+    @apply relative rounded-[2rem] p-4 shadow-sm;
   }
   
   .search-bubble {
-    @apply rounded-full bg-white shadow-sm px-4 py-2 flex items-center;
+    @apply rounded-full bg-white shadow-sm px-5 py-3 flex items-center;
+  }
+
+  .friend-circle {
+    @apply w-14 h-14 rounded-full overflow-hidden border-2 border-white shadow-sm 
+    hover:scale-105 transition-all cursor-pointer;
+  }
+  
+  .animate-float {
+    animation: floating 3s ease-in-out infinite;
+  }
+
+  @keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
   }
 }

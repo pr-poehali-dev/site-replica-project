@@ -20,6 +20,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        playfair: ["Playfair Display", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -40,6 +41,7 @@ const config: Config = {
           green: "hsl(var(--pastel-green))",
           yellow: "hsl(var(--pastel-yellow))",
           pink: "hsl(var(--pastel-pink))",
+          peach: "hsl(var(--pastel-peach))",
         },
         destructive: {
           DEFAULT: "hsl(0 100% 50%)",
@@ -76,10 +78,15 @@ const config: Config = {
           from: { height: "var(--radix-accordion-content-height)", opacity: "1" },
           to: { height: "0", opacity: "0" },
         },
+        "float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "float": "float 3s ease-in-out infinite",
       },
     },
   },

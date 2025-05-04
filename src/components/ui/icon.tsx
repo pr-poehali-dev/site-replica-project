@@ -10,6 +10,7 @@ type IconProps = {
   size?: number;
   strokeWidth?: number;
   className?: string;
+  onClick?: () => void;
 };
 
 const Icon = ({ 
@@ -18,7 +19,8 @@ const Icon = ({
   color, 
   size = 24, 
   strokeWidth = 2,
-  className 
+  className,
+  onClick,
 }: IconProps) => {
   const IconComponent = (LucideIcons as any)[name] || (LucideIcons as any)[fallback];
   
@@ -32,7 +34,8 @@ const Icon = ({
       color={color} 
       size={size} 
       strokeWidth={strokeWidth}
-      className={cn("", className)} 
+      className={cn("", className)}
+      onClick={onClick}
     />
   );
 };
